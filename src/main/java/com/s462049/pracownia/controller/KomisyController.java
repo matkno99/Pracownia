@@ -2,6 +2,7 @@ package com.s462049.pracownia.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.s462049.pracownia.model.Komisy;
+import com.s462049.pracownia.model.Komisy;
 import com.s462049.pracownia.service.KomisyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +40,11 @@ public class KomisyController {
         return new ResponseEntity<>(komisyService.save(komis), HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Komisy> deleteKomis(@PathVariable("id") Long id) {
+    public ResponseEntity<Komisy> deleteKomisy(@PathVariable("id") Long id) {
+        Optional<Komisy> komisy = this.komisyService.findById(id);
+        if (komisy.isEmpty()){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         this.komisyService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

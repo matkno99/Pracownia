@@ -40,7 +40,11 @@ public class KlienciController {
         return new ResponseEntity<>(klienciService.save(klient), HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Klienci> deleteKlient(@PathVariable("id") Long id) {
+    public ResponseEntity<Klienci> deleteKlienci(@PathVariable("id") Long id) {
+        Optional<Klienci> klienci = this.klienciService.findById(id);
+        if (klienci.isEmpty()){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         this.klienciService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

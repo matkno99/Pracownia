@@ -3,6 +3,7 @@ package com.s462049.pracownia.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.s462049.pracownia.model.Samochody;
 import com.s462049.pracownia.model.Samochody;
+import com.s462049.pracownia.model.Samochody;
 import com.s462049.pracownia.service.SamochodyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,7 +41,11 @@ public class SamochodyController {
         return new ResponseEntity<>(samochodyService.save(samochod), HttpStatus.CREATED);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Samochody> deleteSamochod(@PathVariable("id") Long id) {
+    public ResponseEntity<Samochody> deleteSamochody(@PathVariable("id") Long id) {
+        Optional<Samochody> samochody = this.samochodyService.findById(id);
+        if (samochody.isEmpty()){
+            return new ResponseEntity(HttpStatus.NOT_FOUND);
+        }
         this.samochodyService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
