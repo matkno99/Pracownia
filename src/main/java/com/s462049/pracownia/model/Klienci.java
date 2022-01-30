@@ -8,19 +8,18 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Klienci")
+@Table(name = "KLIENCI")
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Klienci {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @Column(nullable = false)
-    private String Client_name;
+    private String clientName;
     @Column(nullable = false)
-    private String Miasto;
+    private String miasto;
 
 
 }

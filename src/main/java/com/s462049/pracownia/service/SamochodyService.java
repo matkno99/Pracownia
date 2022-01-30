@@ -1,19 +1,19 @@
 package com.s462049.pracownia.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.s462049.pracownia.model.Klienci;
+import com.s462049.pracownia.model.Samochody;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface KlienciService {
-    List<Klienci> findAll();
+public interface SamochodyService {
+    List<Samochody> findAll();
 
-    Optional<Klienci> findById(Long id);
+    Optional<Samochody> findById(Long id);
 
-    Klienci save(Klienci klienci);
+    Samochody save(Samochody samochody);
 
-    Klienci update(Long id, Klienci klienci);
+    Samochody update(Long id, Samochody samochody);
 
     void delete(Long id);
 
@@ -21,4 +21,3 @@ public interface KlienciService {
 
     void importdata(String data) throws JsonProcessingException;
 }
-

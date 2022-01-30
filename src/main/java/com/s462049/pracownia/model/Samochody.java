@@ -1,5 +1,6 @@
 package com.s462049.pracownia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +19,9 @@ public class Samochody {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @Column(nullable = false)
-    private String Nazwa_samochodu;
+    private String nazwaSamochodu;
     @Column(nullable = false)
-    private String Przebieg;
+    private String przebieg;
     @ManyToOne
     private Komisy Komis;
 }

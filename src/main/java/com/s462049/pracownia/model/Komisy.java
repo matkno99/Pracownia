@@ -19,11 +19,9 @@ public class Komisy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
     @Column(nullable = false)
-    private String Nazwa_komisu;
+    private String nazwaKomisu;
     @Column(nullable = false)
-    private String Miasto;
-    @OneToMany(mappedBy = "Komis")
-    private Set<Samochody> Samochody;
+    private String miasto;
     @ManyToMany
     @JoinTable(name="Komis_Klienci",joinColumns = @JoinColumn(name="Komisy_ID"),inverseJoinColumns = @JoinColumn(name="Klienci_ID"))
     private Set<Klienci> Klienci;
